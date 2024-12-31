@@ -2,7 +2,7 @@
 
 ## インストール手順
 
-1. このZIPファイルをダウンロードして解凍してください
+1. [このZIPファイル](https://github.com/min2jp/facebook-anonymous-hide/archive/refs/tags/v1.0.0.zip)をダウンロードして解凍してください
 2. Chrome ブラウザを開き、アドレスバーに `chrome://extensions` と入力してください
 3. 右上の「デベロッパーモード」をオンにしてください
 4. 「パッケージ化されていない拡張機能を読み込む」をクリックします
