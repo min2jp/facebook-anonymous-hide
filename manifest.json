@@ -3,17 +3,15 @@
   "name": "Facebook Anonymous Posts Hide",
   "version": "1.1",
   "description": "Facebookグループの匿名投稿を非表示にする拡張機能",
-  {
-    "permissions": [
-      "activeTab",
-      "scripting",
-      "webNavigation"  // モバイル向けに追加
-    ],
-    "host_permissions": [
-      "https://*.facebook.com/*",
-      "https://m.facebook.com/*"  // モバイル向けURLを追加
-    ]
-  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "https://*.facebook.com/*",
+    "https://m.facebook.com/*"
+  ],
   "content_scripts": [
     {
       "matches": ["https://*.facebook.com/*"],
