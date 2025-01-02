@@ -1,14 +1,15 @@
 function hideAnonymousPosts() {
-  // デスクトップ版とモバイル版の両方のセレクタをカバー
   const possibleElements = document.querySelectorAll([
-    'div[role="article"] div',
-    'article div'  // モバイル向けのセレクタ
+    'div[role="article"] div',          // デスクトップ版
+    'span[class="rtl-ignore f2 a"]',    // モバイル版
+    'span[class*="rtl-ignore"]'         // モバイル版の可能性がある別パターン
   ].join(','));
   
   possibleElements.forEach(element => {
     if (element.textContent && element.textContent.trim() === '匿名参加者') {
-      // 投稿のルート要素を取得（デスクトップ/モバイル両対応）
-      const articleElement = element.closest('div[role="article"]') || element.closest('article');
+      // デスクトップ版とモバイル版の両方の親要素を検索
+      const articleElement = element.closest('div[role="article"]') || 
+                           element.closest('div[data-type="container"][class*="displayed"]');
       if (articleElement) {
         articleElement.style.display = 'none';
         articleElement.dataset.hiddenAnonymous = 'true';
