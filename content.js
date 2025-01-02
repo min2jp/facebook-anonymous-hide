@@ -1,19 +1,19 @@
 function hideAnonymousPosts() {
-  const possibleElements = document.querySelectorAll([
-    'div[role="article"] div',          // デスクトップ版
-    'span[class="rtl-ignore f2 a"]',    // モバイル版
-    'span[class*="rtl-ignore"]'         // モバイル版の可能性がある別パターン
-  ].join(','));
-  
-  possibleElements.forEach(element => {
-    if (element.textContent && element.textContent.trim() === '匿名参加者') {
-      // デスクトップ版とモバイル版の両方の親要素を検索
-      const articleElement = element.closest('div[role="article"]') || 
-                           element.closest('div[data-type="container"][class*="displayed"]');
-      if (articleElement) {
-        articleElement.style.display = 'none';
-        articleElement.dataset.hiddenAnonymous = 'true';
-      }
+  // デスクトップ版
+  document.querySelectorAll('div[role="article"]').forEach(article => {
+    const authorElement = article.querySelector('div[data-ad-comet-preview="message"]');
+    if (authorElement && authorElement.textContent.includes('匿名参加者')) {
+      article.style.display = 'none';
+      article.dataset.hiddenAnonymous = 'true';
+    }
+  });
+
+  // モバイル版
+  document.querySelectorAll('div[class="m displayed"]').forEach(container => {
+    const anonymousText = container.querySelector('span[class="rtl-ignore f2 a"]');
+    if (anonymousText && anonymousText.textContent.trim() === '匿名参加者') {
+      container.style.display = 'none';
+      container.dataset.hiddenAnonymous = 'true';
     }
   });
 }
