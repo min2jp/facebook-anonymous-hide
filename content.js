@@ -1,8 +1,8 @@
 function hideAnonymousPosts() {
   // デスクトップ版
   document.querySelectorAll('div[role="article"]').forEach(article => {
-    const authorElement = article.querySelector('div[data-ad-comet-preview="message"]');
-    if (authorElement && authorElement.textContent.includes('匿名参加者')) {
+    const strongElement = article.querySelector('strong');
+    if (strongElement && strongElement.textContent.trim() === '匿名参加者') {
       article.style.display = 'none';
       article.dataset.hiddenAnonymous = 'true';
     }
